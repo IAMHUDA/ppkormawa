@@ -94,20 +94,20 @@ const Header = () => {
   );
 
   return (
-    <header className={`fixed bg-black rounded-b-3xl drop-shadow-3xl py-2 shadow-[#FFCFB3] top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? "bg-black shadow-lg" : "bg-transparent"}`}>
+    <header className={`fixed bg-black rounded-b-3xl drop-shadow-2xl py-2 shadow-[#FFCFB3] top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? "bg-black shadow-lg" : "bg-transparent"}`}>
       <nav className="container mx-auto flex justify-around items-center py-4 px-6">
         <Link to="/" className="flex items-center">
           <img src={Logo} alt="PPKO Ormawa HIMFA UMY" className="w-[50px] h-[50px] object-cover rounded-[50%]"  />
-          <span className="ml-2 text-2xl font-bold font-Dancingscript" style={{ color: 'rgb(255, 175, 0)' }}>PPKO Ormawa HIMFA UMY</span>
+          <span className="ml-2 text-2xl  font-bold font-Dancingscript" style={{ color: 'rgb(255, 175, 0)' }}>PPKO Ormawa HIMFA UMY</span>
         </Link>
 
         {/* Mobile Menu Toggle */}
-        <div className="md:hidden z-50" onClick={toggleMenu}>
+        <div className="md:hidden z-50 text-white" onClick={toggleMenu}>
           {isMenuOpen ? <IoClose size={30} /> : <IoMenu size={30} />}
         </div>
 
         {/* Menu Links */}
-        <div className={`fixed inset-0 bg-white md:bg-transparent md:static md:flex items-center md:space-x-6 p-6 md:p-0 transform ${isMenuOpen ? "translate-x-40 bg-stone-400"  : "translate-x-full"} md:translate-x-0 transition-transform duration-300 ease-in-out`} ref={menuRef}>
+        <div className={`fixed inset-0 h-[300px] sm:h-12 rounded-2xl pt-11 md:bg-transparent bg-black md:static md:flex items-center md:space-x-6 p-6 md:p-0 transform ${isMenuOpen ? "translate-x-40   "  : "translate-x-full"} md:translate-x-0 transition-transform duration-300 ease-in-out`} ref={menuRef}>
           {renderNavLinks()}
         </div>
       </nav>
