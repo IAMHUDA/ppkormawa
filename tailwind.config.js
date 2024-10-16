@@ -9,7 +9,8 @@ export default {
       fontFamily: {
         Dancingscript: ['Dancingscript', 'sans-serif'],
         Updock: ['Updock', 'sans-serif'],
-        Montserrat: ['Montserrat', 'sans-serif']
+        Montserrat: ['Montserrat', 'sans-serif'],
+        Playwrite: ['Playwrite','sans-serif']
       },
       dropShadow: {
         '3xl': '0 5px 30px rgb(255, 207, 179)',

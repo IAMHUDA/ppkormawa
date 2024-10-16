@@ -8,6 +8,9 @@ import Luaran from "./pages/Luaran"
 import Program from "./pages/Program"
 import About from "./pages/About"
 import Footer from "./components/Footer"
+import "slick-carousel/slick/slick.css"
+import "slick-carousel/slick/slick-theme.css"
+
 
 function App() {
   return (

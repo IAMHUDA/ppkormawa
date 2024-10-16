@@ -16,3 +16,8 @@
     font-family: 'Montserrat';
     src: url('../src/assets/font/Montserrat-Italic-VariableFont_wght.ttf') format('opentype');
 }
+
+@font-face {
+    font-family: 'Playwrite';
+    src: url('../src/assets/font/PlaywriteGBS-Italic-VariableFont_wght.ttf') format('opentype');
+}
