@@ -107,7 +107,7 @@ const Header = () => {
         </div>
 
         {/* Menu Links */}
-        <div className={`fixed inset-0 h-[300px] sm:h-12 rounded-2xl pt-11 md:bg-transparent bg-black md:static md:flex items-center md:space-x-6 p-6 md:p-0 transform ${isMenuOpen ? "translate-x-40   "  : "translate-x-full"} md:translate-x-0 transition-transform duration-300 ease-in-out`} ref={menuRef}>
+        <div className={`fixed inset-0 h-[800px] sm:h-12 rounded-2xl pt-11 md:bg-transparent bg-black/70 md:static md:flex items-center md:space-x-6 p-6 md:p-0 transform ${isMenuOpen ? "translate-x-40   "  : "translate-x-full"} md:translate-x-0 transition-transform duration-300 ease-in-out`} ref={menuRef}>
           {renderNavLinks()}
         </div>
       </nav>
