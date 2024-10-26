@@ -33,7 +33,7 @@ function Banner() {
           />
           <div className="absolute inset-0 grid h-full w-full place-items-center bg-black/50 z-10">
             <div className="w-3/4 text-center md:w-2/4">
-              <h1 className="mb-4 text-3xl md:text-4xl lg:text-5xl font-bold font-Playwrite text-orange-500 drop-shadow-3xl">
+              <h1 className="mb-4 text-3xl md:text-4xl lg:text-5xl font-bold font-mono text-orange-500 drop-shadow-3xl">
                 <TypingEffect text="Welcome to Website PPKO Ormawa HIMFA UMY" speed={100} pauseTime={1000} />
               </h1>
               <p className="mb-12 opacity-80 text-white">

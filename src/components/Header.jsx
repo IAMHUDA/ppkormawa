@@ -7,107 +7,78 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef(null);
-  const location = useLocation(); // Hook untuk mendapatkan lokasi URL saat ini
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 10);
     };
-    document.addEventListener("scroll", handleScroll);
-    return () => {
-      document.removeEventListener("scroll", handleScroll);
-    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(prev => !prev);
-  };
-
-  const handleClickOutside = (event) => {
-    if (menuRef.current && !menuRef.current.contains(event.target)) {
-      setIsMenuOpen(false);
-    }
-  };
+  const toggleMenu = () => setIsMenuOpen(prev => !prev);
 
   useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsMenuOpen(false);
+      }
     };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  const navLinkClass = (path) => `
+    text-white hover:text-orange-500 transition-colors duration-300
+    px-4 py-2 rounded-full
+    ${location.pathname === path ? "bg-orange-500 text-white" : "hover:bg-black/30"}
+  `;
+
   const renderNavLinks = () => (
-    <ul className="flex flex-col font-medium  md:flex-row gap-4 md:gap-8">
-      <li>
-        <Link
-          to="/"
-          
-          className={`text-white hover:text-orange-500 hover:bg-black hover:rounded-3xl ${location.pathname === "/" ? "bg-orange-500	 text-white px-6 py-3 rounded-3xl" : ""}`}>
-          home
-        </Link>
-      </li>
-      <li>
-        <Link
-          to="/Berita"
-          
-          className={`text-white hover:text-orange-500 hover:bg-black hover:rounded-3xl ${location.pathname === "/Berita" ? "bg-orange-500	 text-white px-6 py-3 rounded-3xl" : ""}`}>
-          Berita
-        </Link>
-      </li>
-      <li>
-        <Link
-          to="/About"
-          
-          className={`text-white hover:text-orange-500 hover:bg-black hover:rounded-3xl ${location.pathname === "/About" ? "bg-orange-500	 text-white px-6 py-3 rounded-3xl" : ""}`}>
-          About
-        </Link>
-      </li>
-      <li>
-        <Link
-          to="/Program"
-          
-          className={`text-white hover:text-orange-500 hover:bg-black hover:rounded-3xl ${location.pathname === "/Program" ? "bg-orange-500	 text-white px-6 py-3 rounded-3xl" : ""}`}>
-          Program
-        </Link>
-      </li>
-      <li>
-        <Link
-          to="/Lokasi"
-          
-          className={`text-white hover:text-orange-500 hover:bg-black hover:rounded-3xl ${location.pathname === "/Lokasi" ? "bg-orange-500	 text-white px-6 py-3 rounded-3xl" : ""}`}>
-          Lokasi
-        </Link>
-      </li>
-      <li>
-        <Link
-          to="/Luaran"
-          
-          className={`text-white hover:text-orange-500 hover:bg-black hover:rounded-3xl ${location.pathname === "/Luaran" ? "bg-orange-500	 text-white px-6 py-3 rounded-3xl" : ""}`}>
-          Luaran
-        </Link>
-      </li>
+    <ul className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6">
+      {[
+        { path: "/", label: "Home" },
+        { path: "/Berita", label: "Berita" },
+        { path: "/About", label: "About" },
+        { path: "/Program", label: "Program" },
+        { path: "/Lokasi", label: "Lokasi" },
+        { path: "/Luaran", label: "Luaran" },
+      ].map(({ path, label }) => (
+        <li key={path}>
+          <Link to={path} className={navLinkClass(path)}>
+            {label}
+          </Link>
+        </li>
+      ))}
     </ul>
   );
 
   return (
-    <header className={`fixed bg-black rounded-b-3xl drop-shadow-2xl py-2 shadow-[#FFCFB3] top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? "bg-black shadow-lg" : "bg-transparent"}`}>
-      <nav className="container mx-auto flex justify-around items-center py-4 px-6">
-        <Link to="/" className="flex items-center">
-          <img src={Logo} alt="PPKO Ormawa HIMFA UMY" className="w-[50px] h-[50px] object-cover rounded-[50%]"  />
-          <span className="ml-2 text-2xl  font-bold font-Dancingscript" style={{ color: 'rgb(255, 175, 0)' }}>PPKO Ormawa HIMFA UMY</span>
+    <header className={`
+      fixed top-0 left-0 w-full z-50 transition-all duration-300
+      ${isScrolled ? "bg-black/90 shadow-lg" : "bg-transparent"}
+      backdrop-blur-sm
+    `}>
+      <nav className="container mx-auto flex justify-between items-center py-4 px-6">
+        <Link to="/" className="flex items-center space-x-3">
+          <img src={Logo} alt="PPKO Ormawa HIMFA UMY" className="w-12 h-12 object-cover rounded-full" />
+          <span className="text-xl font-bold font-serif text-orange-400">
+            PPKO Ormawa HIMFA UMY
+          </span>
         </Link>
 
-        {/* Mobile Menu Toggle */}
-        <div className="md:hidden z-50 text-white" onClick={toggleMenu}>
-          {isMenuOpen ? <IoClose size={30} /> : <IoMenu size={30} />}
+        <div className="md:hidden z-50" onClick={toggleMenu}>
+          {isMenuOpen ? <IoClose size={30} className="text-white" /> : <IoMenu size={30} className="text-white" />}
         </div>
 
-        {/* Menu Links */}
-        <div className={`fixed inset-0 h-[800px] sm:h-12 rounded-2xl pt-11 md:bg-transparent bg-black/70 md:static md:flex items-center md:space-x-6 p-6 md:p-0 transform ${isMenuOpen ? "translate-x-40   "  : "translate-x-full"} md:translate-x-0 transition-transform duration-300 ease-in-out`} ref={menuRef}>
+        <div className={`
+          fixed inset-0 md:static
+          flex flex-col md:flex-row items-center h-72 sm:h-auto justify-center
+          bg-black/65 md:bg-transparent
+          transform ${isMenuOpen ? "translate-y-0" : "-translate-y-full"}
+          md:translate-y-0  transition-transform duration-300 ease-in-out
+        `} ref={menuRef}>
           {renderNavLinks()}
         </div>
       </nav>

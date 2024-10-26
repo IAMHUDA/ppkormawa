@@ -1,8 +1,10 @@
 import React from 'react'
+import Locate from '../components/Lokasi/Locate'
 
 function Lokasi() {
   return (
-    <div>
+    <div className=''>
+      <Locate />
       
     </div>
   )

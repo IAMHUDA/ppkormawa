@@ -7,71 +7,39 @@ import Ph from "../../assets/image/phtim.png";
 
 function Division() {
   return (
-    <section className="bg-black">
-      <span className="flex text-white items-center mb-10 sm:mb-20">
-        <span className="h-px flex-1 bg-white"></span>
-        <span className="shrink-0 px-4 sm:px-6 text-3xl sm:text-5xl font-bold font-Dancingscript">
-          OUR DIVISION
-        </span>
-        <span className="h-px flex-1 bg-yellow-500"></span>
-      </span>
-      <div className="container mx-auto min-h-screen bg-black">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-12">
-          {/* Division Logistik */}
-          <motion.a initial={{ opacity: 0, y: 50 }} transition={{ duration: 2 }} whileInView={{ opacity: 1, y: 0 }} href="#" className="block">
-            <img
-              alt="Logistik Team"
-              src={Logistik}
-              className="h-40 w-full sm:h-56 lg:h-72 object-contain bg-white rounded-bl-3xl rounded-tr-3xl"
-            />
-            <div className="mt-4 sm:flex sm:items-center sm:justify-center sm:gap-4 text-center">
-              <strong className="font-medium text-lg sm:text-xl text-white">Team</strong>
-              <span className="hidden sm:block sm:h-px sm:w-8 sm:bg-yellow-500"></span>
-              <p className="mt-0.5 text-lg sm:mt-0 text-white">Logistik</p>
-            </div>
-          </motion.a>
-
-          {/* Division Ph */}
-          <motion.a initial={{ opacity: 0, y: 50 }} transition={{ duration: 2 }} whileInView={{ opacity: 1, y: 0 }} href="#" className="block">
-            <img
-              alt="Ph Team"
-              src={Ph}
-              className="h-40 w-full sm:h-56 lg:h-72 object-contain bg-white rounded-bl-3xl rounded-tr-3xl"
-            />
-            <div className="mt-4 sm:flex sm:items-center sm:justify-center sm:gap-4 text-center">
-              <strong className="font-medium text-lg sm:text-xl text-white">Team</strong>
-              <span className="hidden sm:block sm:h-px sm:w-8 sm:bg-yellow-500"></span>
-              <p className="mt-0.5 text-lg sm:mt-0 text-white">Ph</p>
-            </div>
-          </motion.a>
-
-          {/* Division Media */}
-          <motion.a initial={{ opacity: 0, y: 50 }} transition={{ duration: 2 }} whileInView={{ opacity: 1, y: 0 }} href="#" className="block">
-            <img
-              alt="Media Team"
-              src={Media}
-              className="h-40 w-full sm:h-56 lg:h-72 object-contain bg-white rounded-bl-3xl rounded-tr-3xl"
-            />
-            <div className="mt-4 sm:flex sm:items-center sm:justify-center sm:gap-4 text-center">
-              <strong className="font-medium text-lg sm:text-xl text-white">Team</strong>
-              <span className="hidden sm:block sm:h-px sm:w-8 sm:bg-yellow-500"></span>
-              <p className="mt-0.5 text-lg sm:mt-0 text-white">Media</p>
-            </div>
-          </motion.a>
-
-          {/* Division Acara */}
-          <motion.a initial={{ opacity: 0, y: 50 }} transition={{ duration: 2 }} whileInView={{ opacity: 1, y: 0 }} href="#" className="block">
-            <img
-              alt="Acara Team"
-              src={Acara}
-              className="h-40 w-full sm:h-56 lg:h-72 object-contain bg-white rounded-bl-3xl rounded-tr-3xl"
-            />
-            <div className="mt-4 sm:flex sm:items-center sm:justify-center sm:gap-4 text-center">
-              <strong className="font-medium text-lg sm:text-xl text-white">Team</strong>
-              <span className="hidden sm:block sm:h-px sm:w-8 sm:bg-yellow-500"></span>
-              <p className="mt-0.5 text-lg sm:mt-0 text-white">Acara</p>
-            </div>
-          </motion.a>
+    <section className="bg-black py-16">
+      <div className="container mx-auto">
+        <h2 className="text-center text-4xl font-bold text-white mb-12">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-yellow-600">
+            OUR DIVISION
+          </span>
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {[
+            { name: "Logistik", image: Logistik },
+            { name: "Ph", image: Ph },
+            { name: "Media", image: Media },
+            { name: "Acara", image: Acara }
+          ].map((division, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="bg-gray-900 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
+            >
+              <div className="h-64 overflow-hidden">
+                <img
+                  src={division.image}
+                  alt={`${division.name} Team`}
+                  className="w-full h-full object-cover object-center transform hover:scale-110 transition-transform duration-300"
+                />
+              </div>
+              <div className="p-4 text-center">
+                <h3 className="text-xl font-semibold text-white">{division.name} Team</h3>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

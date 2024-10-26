@@ -2,7 +2,8 @@ import React from 'react';
 import Banner from '../components/homes/Banner';
 import About from '../components/homes/About';
 import Program from '../components/homes/Program';
-import Berita from '../components/homes/Berita'
+import Berita from '../components/homes/Berita';
+import Luaran from '../components/homes/Luaran'
 
 
 function Home() {
@@ -14,6 +15,7 @@ function Home() {
         <About/>
         <Program/>
         <Berita/>
+        <Luaran/>
       </div>
     </div>
     </>
