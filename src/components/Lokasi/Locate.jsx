@@ -2,7 +2,7 @@ import React from 'react'
 
 function Locate() {
   return (
-    <section className="bg-gradient-to-b from-gray-900 to-gray-800 py-16">
+    <section className="bg-gradient-to-b mt-24 from-gray-900 to-gray-800 py-16">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl md:text-5xl font-bold text-center text-white mb-12">
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-yellow-600">

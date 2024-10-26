@@ -3,6 +3,7 @@ import Logo from '../assets/image/ppko.png'
 import { IoLogoYoutube } from "react-icons/io";
 import { FaInstagramSquare } from "react-icons/fa";
 import { AiFillTikTok } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 
 function Footer() {
@@ -25,23 +26,24 @@ function Footer() {
           <div className="flex flex-col items-center md:items-start">
             <h3 className="text-xl font-bold mb-4">Tautan Cepat</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="hover:text-orange-500 transition">Beranda</a></li>
-              <li><a href="#" className="hover:text-orange-500 transition">Program</a></li>
-              <li><a href="#" className="hover:text-orange-500 transition">Berita</a></li>
-              <li><a href="#" className="hover:text-orange-500 transition">Tentang Kami</a></li>
+              <li><Link to="/Home" className="hover:text-orange-500 transition">Beranda</Link></li>
+              <li><Link to="/Program" className="hover:text-orange-500 transition">Program</Link></li>
+              <li><Link to="/Berita" className="hover:text-orange-500 transition">Berita</Link></li>
+              <li><Link to="/About" className="hover:text-orange-500 transition">Tentang Kami</Link></li>
+              <li><Link to="/Lokasi" className="hover:text-orange-500 transition">Lokasi Kami</Link></li>
             </ul>
           </div>
           
           <div className="flex flex-col items-center md:items-start">
             <h3 className="text-xl font-bold mb-4">Ikuti Kami</h3>
             <div className="flex space-x-4">
-              <a href="#" className="text-2xl hover:text-orange-500 transition" title="Instagram">
+              <a href="https://www.instagram.com/ppkormawa.himfa/" className="text-2xl hover:text-orange-500 transition" title="Instagram">
                 <FaInstagramSquare />
               </a>
-              <a href="#" className="text-2xl hover:text-orange-500 transition" title="TikTok">
+              <a href="https://www.tiktok.com/@ppkormawa.himfa" className="text-2xl hover:text-orange-500 transition" title="TikTok">
                 <AiFillTikTok />
               </a>
-              <a href="#" className="text-2xl hover:text-orange-500 transition" title="YouTube">
+              <a href="https://www.youtube.com/@himfaumy5962" className="text-2xl hover:text-orange-500 transition" title="YouTube">
                 <IoLogoYoutube />
               </a>
             </div>
